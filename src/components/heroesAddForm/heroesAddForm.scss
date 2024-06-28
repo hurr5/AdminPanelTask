@@ -1,0 +1,17 @@
+.error-message {
+  position: relative;
+  display: inline-block;
+  padding: 0 5px;
+  color: #d33648;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+  svg {
+    position: absolute;
+    left: -20px;
+    top: 5px;
+    width: 15px;
+  }
+}
+

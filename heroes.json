@@ -13,10 +13,22 @@
       "element": "wind"
     },
     {
-        "id": "3",
-        "name": "Batman",
-        "description": "Мышь",
-        "element": "all"
+      "id": "43da69e0-11e5-498d-acbf-873d0b7820e1",
+      "name": "Бэтмэн",
+      "description": "Рыцарь ночи, бью, но не убиваю",
+      "element": "wind"
+    },
+    {
+      "id": "11769f1c-75ba-427c-b999-e0d9f4cd6f54",
+      "name": "Аквамен",
+      "description": "Не знаю что умею, но умею",
+      "element": "water"
+    },
+    {
+      "id": "bdd796fc-16e3-4c04-aea0-8911c3d39fd7",
+      "name": "Thanos",
+      "description": "Owner of world",
+      "element": "earth"
     }
   ],
   "filters": [

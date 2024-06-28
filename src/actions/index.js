@@ -4,6 +4,13 @@ export const heroesFetching = () => {
     }
 }
 
+export const heroCreated = (hero) => {
+    return {
+        type: 'HERO_CREATED',
+        payload: hero
+    }
+}
+
 export const heroesFetched = (heroes) => {
     return {
         type: 'HEROES_FETCHED',

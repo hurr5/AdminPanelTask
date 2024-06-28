@@ -1,22 +1,21 @@
-import { v4 as uuidv4 } from 'uuid';
+import React, { useEffect } from 'react';
+import { useHttp } from '../../hooks/http.hook';
+import { useDispatch } from 'react-redux';
+import { heroCreated } from '../../actions';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
+import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
-
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
+import './heroesAddForm.scss';
 
 const HeroesAddForm = () => {
+    const dispatch = useDispatch();
+    const { request } = useHttp();
+
     return (
         <Formik initialValues={{
             name: '',
             text: '',
+            element: ''
         }}
             validationSchema={Yup.object({
                 name: Yup.string()
@@ -29,8 +28,20 @@ const HeroesAddForm = () => {
                     .oneOf(['fire', 'water', 'wind', 'earth'], 'Выберите один из доступных элементов')
                     .required('Это обязательное поле')
             })}
-            onSubmit={({ name, text, element }) => {
-                console.log(`I'm ${name}, I can ${text}, my element is ${element}`)
+            onSubmit={({ name, text, element }, { resetForm }) => {
+                const newHero = {
+                    id: uuidv4(),
+                    name,
+                    description: text,
+                    element
+                };
+                request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
+                    .then(res => {
+                        console.log(res, 'Post completed');
+                        dispatch(heroCreated(newHero));
+                        resetForm();
+                    })
+                    .catch(err => console.log(err));
             }}>
             <Form className="border p-4 shadow-lg rounded">
                 <div className="mb-3">
@@ -41,6 +52,7 @@ const HeroesAddForm = () => {
                         className="form-control"
                         id="name"
                         placeholder="Как меня зовут?" />
+                    <FormikErrorMessage className='error' name='name' component={CustomErrorMessage} />
                 </div>
 
                 <div className="mb-3">
@@ -51,7 +63,8 @@ const HeroesAddForm = () => {
                         className="form-control"
                         id="text"
                         placeholder="Что я умею?"
-                        style={{ "height": '130px' }} />
+                        style={{ height: '130px' }} />
+                    <FormikErrorMessage className='error' name='text' component={CustomErrorMessage} />
                 </div>
 
                 <div className="mb-3">
@@ -59,22 +72,32 @@ const HeroesAddForm = () => {
                     <Field
                         component="select"
                         className="form-select"
-                        multiple={false}
                         id="element"
                         name="element">
-                        <option value={null}>Я владею элементом...</option>
+                        <option value="">Я владею элементом...</option>
                         <option value="fire">Огонь</option>
                         <option value="water">Вода</option>
                         <option value="wind">Ветер</option>
-                        <option value="earth ">Земля</option>
+                        <option value="earth">Земля</option>
                     </Field>
-
+                    <FormikErrorMessage className='error' name='element' component={CustomErrorMessage} />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Создать</button>
             </Form>
         </Formik>
-    )
-}
+    );
+};
+
+const CustomErrorMessage = ({ children }) => {
+    return (
+        <div className="error-message">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="#d33648" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+            </svg>
+            {children}
+        </div>
+    );
+};
 
 export default HeroesAddForm;

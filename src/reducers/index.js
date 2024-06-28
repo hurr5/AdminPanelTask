@@ -11,6 +11,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 heroesLoadingStatus: 'loading'
             }
+        case 'HERO_CREATED':
+            const newHeroesList = [...state.heroes, action.payload]
+            return {
+                ...state,
+                heroes: newHeroesList
+            }
         case 'HEROES_FETCHED':
             return {
                 ...state,
