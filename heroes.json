@@ -1,56 +1,66 @@
 {
   "heroes": [
     {
-      "id": "1",
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "id": "891d5aeb-c4f1-41f7-a9d7-5ff3d3c5bcb1",
+      "name": "Thanos",
+      "description": "Owner of the entire world",
+      "element": "earth"
+    },
+    {
+      "id": "4ce8a23d-8d6e-4e5b-806a-8861b4499e21",
+      "name": "Batman",
+      "description": "Like a bat, but man",
+      "element": "wind"
+    },
+    {
+      "id": "c8fcb6ad-138a-43bd-bd02-7a99ec86c0e1",
+      "name": "First hero",
+      "description": "But not first in list",
       "element": "fire"
     },
     {
-      "id": "2",
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
-      "element": "wind"
-    },
-    {
-      "id": "43da69e0-11e5-498d-acbf-873d0b7820e1",
-      "name": "Бэтмэн",
-      "description": "Рыцарь ночи, бью, но не убиваю",
-      "element": "wind"
-    },
-    {
-      "id": "11769f1c-75ba-427c-b999-e0d9f4cd6f54",
-      "name": "Аквамен",
-      "description": "Не знаю что умею, но умею",
-      "element": "water"
-    },
-    {
-      "id": "bdd796fc-16e3-4c04-aea0-8911c3d39fd7",
-      "name": "Thanos",
-      "description": "Owner of world",
+      "id": "c1cb9f3c-2157-4d9f-9708-20e998b5a05f",
+      "name": "Unknown hero",
+      "description": "Idk",
       "element": "earth"
+    },
+    {
+      "id": "90563826-2922-4641-8827-03c2dbce4c9b",
+      "name": "asd",
+      "description": "asd",
+      "element": "water"
     }
   ],
   "filters": [
     {
       "id": "1",
-      "name": "all"
+      "name": "all",
+      "label": "Все",
+      "className": "btn-outline-dark"
     },
     {
       "id": "2",
-      "name": "fire"
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
     },
     {
       "id": "3",
-      "name": "water"
+      "name": "water",
+      "label": "Вода",
+      "className": "btn-primary"
     },
     {
       "id": "4",
-      "name": "wind"
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
     },
     {
       "id": "5",
-      "name": "earth"
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
     }
   ]
 }

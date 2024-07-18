@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
 import { useHttp } from '../../hooks/http.hook';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { heroCreated } from '../../actions';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,7 +8,27 @@ import './heroesAddForm.scss';
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
+    const { filters, filtersLoadingStatus } = useSelector(state => state)
     const { request } = useHttp();
+
+
+    const renderFilters = (arr, status) => {
+        if (status === "loading") {
+            return <option >Fetching elements error</option>
+        } else if (status === "error") {
+            return <option>Elements error</option>
+        }
+
+        if (filters && filters.length > 0) {
+            return filters.map(({ name, label }) => {
+                // eslint-disable-next-line
+                if (name === 'all') return;
+
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
+
+    }
 
     return (
         <Formik initialValues={{
@@ -28,6 +47,8 @@ const HeroesAddForm = () => {
                     .oneOf(['fire', 'water', 'wind', 'earth'], 'Выберите один из доступных элементов')
                     .required('Это обязательное поле')
             })}
+            validateOnBlur={false}
+            validateOnChange={false}
             onSubmit={({ name, text, element }, { resetForm }) => {
                 const newHero = {
                     id: uuidv4(),
@@ -75,10 +96,7 @@ const HeroesAddForm = () => {
                         id="element"
                         name="element">
                         <option value="">Я владею элементом...</option>
-                        <option value="fire">Огонь</option>
-                        <option value="water">Вода</option>
-                        <option value="wind">Ветер</option>
-                        <option value="earth">Земля</option>
+                        {renderFilters(filters, filtersLoadingStatus)}
                     </Field>
                     <FormikErrorMessage className='error' name='element' component={CustomErrorMessage} />
                 </div>
