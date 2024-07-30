@@ -8,7 +8,7 @@ import './heroesAddForm.scss';
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
-    const { filters, filtersLoadingStatus } = useSelector(state => state)
+    const { filters, filtersLoadingStatus } = useSelector(state => state.filters)
     const { request } = useHttp();
 
 

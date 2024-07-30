@@ -7,28 +7,16 @@
       "element": "earth"
     },
     {
-      "id": "4ce8a23d-8d6e-4e5b-806a-8861b4499e21",
-      "name": "Batman",
-      "description": "Like a bat, but man",
-      "element": "wind"
-    },
-    {
-      "id": "c8fcb6ad-138a-43bd-bd02-7a99ec86c0e1",
-      "name": "First hero",
-      "description": "But not first in list",
-      "element": "fire"
-    },
-    {
-      "id": "c1cb9f3c-2157-4d9f-9708-20e998b5a05f",
-      "name": "Unknown hero",
-      "description": "Idk",
+      "id": "e33d5db2-7280-4040-bd09-2b115eeec3e7",
+      "name": "Earth Shaker",
+      "description": "I can cast echo slam",
       "element": "earth"
     },
     {
-      "id": "90563826-2922-4641-8827-03c2dbce4c9b",
+      "id": "144e3386-5f48-4f84-868c-6d2bc46d9317",
       "name": "asd",
       "description": "asd",
-      "element": "water"
+      "element": "wind"
     }
   ],
   "filters": [
