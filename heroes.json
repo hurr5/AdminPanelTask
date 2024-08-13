@@ -7,16 +7,16 @@
       "element": "earth"
     },
     {
-      "id": "e33d5db2-7280-4040-bd09-2b115eeec3e7",
-      "name": "Earth Shaker",
-      "description": "I can cast echo slam",
-      "element": "earth"
-    },
-    {
       "id": "144e3386-5f48-4f84-868c-6d2bc46d9317",
       "name": "asd",
       "description": "asd",
       "element": "wind"
+    },
+    {
+      "id": "20af2d0f-65f8-43b9-ac8d-c92c464bbe1b",
+      "name": "asd",
+      "description": "asd",
+      "element": "fire"
     }
   ],
   "filters": [
